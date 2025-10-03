@@ -10,6 +10,11 @@ import Mentorship from './pages/Mentorship';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
+import Messaging from './pages/Messaging';
+import ReferralRequests from './pages/ReferralRequests';
+import PostedItems from './pages/PostedItems';
 import Placeholder from './pages/Placeholder';
 
 function App() {
@@ -36,8 +41,11 @@ function App() {
                   <Route path="/events" element={<Events />} />
                   <Route path="/donations" element={<Donations />} />
                   <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/profile" element={<Placeholder title="Profile" icon="fa-user" />} />
-                  <Route path="/settings" element={<Placeholder title="Settings" icon="fa-cog" />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="/messaging" element={<Messaging />} />
+                  <Route path="/referral-requests" element={<ReferralRequests />} />
+                  <Route path="/posted-items" element={<PostedItems />} />
                 </Routes>
                 <Footer />
               </>

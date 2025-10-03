@@ -78,7 +78,7 @@ const TopNavbar = () => {
               </NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link as={Link} to="/dashboard">My Activity</Nav.Link>
           </Nav>
 
           <Nav className="ms-auto navbar-right">

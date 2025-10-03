@@ -1,16 +1,33 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import './Auth.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const demoCredentials = [
+    { email: 'student@demo.com', password: 'demo123', role: 'Student' },
+    { email: 'alumni@demo.com', password: 'demo123', role: 'Alumni' },
+    { email: 'admin@demo.com', password: 'demo123', role: 'College Admin' },
+    { email: 'faculty@demo.com', password: 'demo123', role: 'College Faculty' }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Login:', { email, password });
+    navigate('/dashboard');
+  };
+
+  const handleDemoLogin = (demoEmail: string, demoPassword: string) => {
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 500);
   };
 
   return (
@@ -55,6 +72,23 @@ const Login = () => {
                   <h2 className="fw-bold mb-2">Log in</h2>
                   <p className="text-muted">Welcome back! Please login to your account</p>
                 </div>
+
+                <Alert variant="info" className="py-2">
+                  <strong>Demo Access:</strong>
+                  <div className="mt-2">
+                    {demoCredentials.map((cred, idx) => (
+                      <Button
+                        key={idx}
+                        variant="outline-primary"
+                        size="sm"
+                        className="me-2 mb-2"
+                        onClick={() => handleDemoLogin(cred.email, cred.password)}
+                      >
+                        {cred.role}
+                      </Button>
+                    ))}
+                  </div>
+                </Alert>
 
                 <div className="mb-4">
                   <Button variant="outline-primary" className="w-100 mb-3" size="lg">
